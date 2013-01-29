@@ -63,30 +63,8 @@ public:
 
     QVariantMap loadData(quint32 id, quint32 method);
     bool storeData(quint32 id, quint32 method, const QVariantMap &data);
-    bool removeData(quint32 id, quint32 method);
+    virtual bool removeData(quint32 id, quint32 method);
 
-private:
-    enum SignonSecretType {
-        NoType = 0,
-        Password,
-        Username,
-        Data
-    };
-
-    bool storeSecret(SignonSecretType type,
-                     quint32 id,
-                     quint32 method,
-                     const QByteArray &secret);
-    bool loadSecret(SignonSecretType type,
-                    quint32 id,
-                    quint32 method,
-                    QByteArray &secret);
-    bool removeSecrets(SignonSecretType type,
-                       quint32 id,
-                       quint32 method,
-                       QueryFields fields);
-    const char *keyring() const;
-    bool isActiveKeyring(const char *keyringName) const;
 
     QByteArray m_keyringName;
     KWallet::Wallet* m_wallet;
