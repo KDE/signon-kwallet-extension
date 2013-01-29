@@ -78,14 +78,14 @@ void testExtension::testStoreLoadAndRemoveData()
     data["string"] = QString("string");
     data["bool"] = false;
 
-    QVERIFY(m_storage->storeData(43, SecretsStorage::MethodField, data));
+    QVERIFY(m_storage->storeData(43, 2, data));
 
-    data = m_storage->loadData(43, SecretsStorage::MethodField);
+    data = m_storage->loadData(43, 2);
     QCOMPARE(data["int"].toInt(), 4);
     QCOMPARE(data["string"].toString(), QString("string"));
     QCOMPARE(data["bool"].toBool(), false);
 
-    QVERIFY(m_storage->removeData(43, SecretsStorage::MethodField));
+    QVERIFY(m_storage->removeData(43, 2));
 
 }
 

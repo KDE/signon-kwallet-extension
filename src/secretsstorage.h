@@ -37,39 +37,24 @@ class SecretsStorage: public SignOn::AbstractSecretsStorage
     Q_OBJECT
 
 public:
-    enum QueryField {
-        None            = 0,
-        IdField         = 1 << 0,
-        MethodField     = 1 << 1,
-        TypeField       = 1 << 2,
-    };
-    Q_DECLARE_FLAGS(QueryFields, QueryField)
-
     SecretsStorage(QObject *parent = 0);
     ~SecretsStorage();
 
-    // reimplemented virtual methods
-    bool initialize(const QVariantMap &configuration);
+    virtual bool initialize(const QVariantMap& configuration);
     virtual bool close();
-    bool clear();
+    virtual bool clear();
 
-    bool updateCredentials(const quint32 id,
-                           const QString &username,
-                           const QString &password);
-    bool removeCredentials(const quint32 id);
-    bool loadCredentials(const quint32 id,
-                         QString &username,
-                         QString &password);
+    virtual bool updateCredentials(const quint32 id, const QString& username, const QString& password);
+    virtual bool removeCredentials(const quint32 id);
+    virtual bool loadCredentials(const quint32 id, QString& username, QString& password);
 
-    QVariantMap loadData(quint32 id, quint32 method);
-    bool storeData(quint32 id, quint32 method, const QVariantMap &data);
+    virtual QVariantMap loadData(quint32 id, quint32 method);
+    virtual bool storeData(quint32 id, quint32 method, const QVariantMap& data);
     virtual bool removeData(quint32 id, quint32 method);
 
 
     QByteArray m_keyringName;
     KWallet::Wallet* m_wallet;
 };
-
-Q_DECLARE_OPERATORS_FOR_FLAGS(SecretsStorage::QueryFields)
 
 #endif // KEYRING_SECRETS_STORAGE_H
