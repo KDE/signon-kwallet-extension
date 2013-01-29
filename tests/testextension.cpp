@@ -1,5 +1,5 @@
 /*************************************************************************************
- *  Copyright (C) 2012 by Alejandro Fiestas Olivares <afiestas@kde.org>              *
+ *  Copyright (C) 2013 by Alejandro Fiestas Olivares <afiestas@kde.org>              *
  *                                                                                   *
  *  This program is free software; you can redistribute it and/or                    *
  *  modify it under the terms of the GNU General Public License                      *
