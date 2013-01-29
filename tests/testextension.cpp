@@ -29,7 +29,7 @@ class testExtension : public QObject
 private Q_SLOTS:
     void initTestCase();
     void testUpdateLoadRemoveCredentials();
-    void testLoadData();
+    void testStoreLoadAndRemoveData();
 
 private:
     SecretsStorage *m_storage;
@@ -71,12 +71,22 @@ void testExtension::testUpdateLoadRemoveCredentials()
     QCOMPARE(password, QString());
 }
 
-void testExtension::testLoadData()
+void testExtension::testStoreLoadAndRemoveData()
 {
     QVariantMap data;
     data["int"] = 4;
     data["string"] = QString("string");
     data["bool"] = false;
+
+    QVERIFY(m_storage->storeData(43, SecretsStorage::MethodField, data));
+
+    data = m_storage->loadData(43, SecretsStorage::MethodField);
+    QCOMPARE(data["int"].toInt(), 4);
+    QCOMPARE(data["string"].toString(), QString("string"));
+    QCOMPARE(data["bool"].toBool(), false);
+
+    QVERIFY(m_storage->removeData(43, SecretsStorage::MethodField));
+
 }
 
 QTEST_MAIN(testExtension)

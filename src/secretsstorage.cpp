@@ -145,17 +145,13 @@ QVariantMap SecretsStorage::loadData(quint32 id, quint32 method)
         return data;
     }
 
-    QMap<QString, QString> map;
-    if (m_wallet->readMap(sId, map) != 0) {
+    QByteArray binaryData;
+    if (m_wallet->readEntry(sId, binaryData) != 0) {
         return data;
     }
 
-    QMapIterator<QString, QString> i(map);
-    while (i.hasNext()) {
-        i.next();
-        data.insert(i.key(), QVariant(i.value()));
-    }
-
+    QDataStream stream(binaryData);
+    stream >> data;
     return data;
 }
 
@@ -165,18 +161,12 @@ bool SecretsStorage::storeData(quint32 id, quint32 method,
     QString sId = QString::number(id);
     sId.append(+ "/" + QString::number(method));
 
-    QMap<QString, QString> map;
-    if (m_wallet->readMap(sId, map) != 0) {
-        return false;
-    }
+    QByteArray serializedData;
+    QDataStream stream(&serializedData, QIODevice::WriteOnly);
+    stream << data;
 
-    QMapIterator<QString, QVariant> i(data);
-    while (i.hasNext()) {
-        i.next();
-        map.insert(i.key(), i.value().toString());
-    }
 
-    return m_wallet->writeMap(sId, map) == 0;
+    return m_wallet->writeEntry(sId, serializedData) == 0;
 }
 
 bool SecretsStorage::removeData(quint32 id, quint32 method)
