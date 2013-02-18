@@ -4,7 +4,19 @@
 #  SIGNONEXTENSION_INCLUDE_DIRS - The libsignon-qt include directories
 #  SIGNONEXTENSION_LIBRARIES - The libraries needed to use libsignon-qt
 
-find_package(PkgConfig)
+find_package(PkgConfig REQUIRED)
+
+execute_process(
+    COMMAND "${PKG_CONFIG_EXECUTABLE}" --variable=plugindir SignOnExtension
+    OUTPUT_VARIABLE _pkgconfig_invoke_result
+    RESULT_VARIABLE _pkgconfig_failed)
+if (_pkgconfig_failed)
+    message(FAILED "couldn-t find the plugindir for signonextension")
+else()
+    string(REGEX REPLACE "[\r\n]"                  " " _pkgconfig_invoke_result "${_pkgconfig_invoke_result}")
+    string(REGEX REPLACE " +$"                     ""  _pkgconfig_invoke_result "${_pkgconfig_invoke_result}")
+    set(SIGNONEXTENSION_PLUGINDIR ${_pkgconfig_invoke_result})
+endif()
 
 find_path(SIGNONEXTENSION_INCLUDE_DIR SignOn/AbstractSecretsStorage
           HINTS ${SIGNONEXTENSION_INCLUDEDIR} ${SIGNONEXTENSION_INCLUDE_DIRS}

@@ -5,12 +5,14 @@ set(kwalletsignon_SRCS
     secretsstorage.cpp
 )
 
-automoc4_add_library(keyring-kwallet MODULE ${kwalletsignon_SRCS})
+automoc4_add_library(libkeyring-kwallet MODULE ${kwalletsignon_SRCS})
 
-set_target_properties(keyring-kwallet PROPERTIES PREFIX "")
-target_link_libraries(keyring-kwallet ${QT_QTCORE_LIBRARY} ${QT_QTDBUS_LIBRARY} ${KDE4_KUTILS_LIBS} ${SIGNONEXTENSION_LIBRARIES})
+set_target_properties(libkeyring-kwallet PROPERTIES PREFIX "")
+target_link_libraries(libkeyring-kwallet ${QT_QTCORE_LIBRARY} ${QT_QTDBUS_LIBRARY} ${KDE4_KUTILS_LIBS} ${SIGNONEXTENSION_LIBRARIES})
 
-set_target_properties(keyring-kwallet PROPERTIES
+set_target_properties(libkeyring-kwallet PROPERTIES
     VERSION ${kwalletsignon_VERSION}
     SOVERSION ${kwalletsignon_VERSION_MAJOR}
 )
+
+install(TARGETS libkeyring-kwallet DESTINATION ${SIGNONEXTENSION_PLUGINDIR})
