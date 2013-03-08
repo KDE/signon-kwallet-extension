@@ -120,10 +120,6 @@ bool SecretsStorage::loadCredentials(const quint32 id,
         return false;
     }
 
-    if (!map.contains("username") || !map.contains("password")) {
-        return false;
-    }
-
     username = map["username"];
     password = map["password"];
 
