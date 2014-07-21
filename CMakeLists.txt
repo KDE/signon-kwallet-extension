@@ -1,19 +1,30 @@
-project(kwalletsignon)
+project(kwalletsignon5)
 set(kwalletsignon_VERSION_MAJOR 0)
-set(kwalletsignon_VERSION_MINOR 9)
+set(kwalletsignon_VERSION_MINOR 10)
 set(kwalletsignon_VERSION_RELEASE 0)
-set(kwalletsignon_VERSION "0.9.0")
+set(kwalletsignon_VERSION "0.10.0")
 
-cmake_minimum_required(VERSION 2.6)
-SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
+cmake_minimum_required(VERSION 2.8.12)
 
-find_package(Qt4 REQUIRED)
-find_package(KDE4 REQUIRED)
+find_package(ECM 1.0.0 REQUIRED NO_MODULE)
+
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+
+find_package(Qt5 5.2.0 CONFIG REQUIRED Core DBus)
+
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(FeatureSummary)
+include(ECMInstallIcons)
+include(KDEFrameworkCompilerSettings)
+
+find_package(KF5 5.0 REQUIRED Wallet)
+
 find_package(SignOnExtension REQUIRED)
 
-add_definitions (${KDE4_DEFINITIONS} -fexceptions -DQT_NO_KEYWORDS -Wno-missing-field-initializers -fno-rtti)
-
-include(KDE4Defaults)
-
 add_subdirectory(src)
-add_subdirectory(tests)
+# add_subdirectory(tests)
+
+if("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
+  feature_summary(WHAT ALL   FATAL_ON_MISSING_REQUIRED_PACKAGES)
+endif()

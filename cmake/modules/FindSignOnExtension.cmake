@@ -31,7 +31,7 @@ set(SIGNONEXTENSION_INCLUDE_DIRS ${SIGNONEXTENSION_INCLUDE_DIR} )
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set  SIGNONEXTENSION_FOUND to TRUE
 # if all listed variables are TRUE
-find_package_handle_standard_args(libsignon-extension  DEFAULT_MSG
+find_package_handle_standard_args(SignOnExtension DEFAULT_MSG
                                   SIGNONEXTENSION_LIBRARY SIGNONEXTENSION_INCLUDE_DIR)
 
 mark_as_advanced(SIGNONEXTENSION_INCLUDE_DIR SIGNONEXTENSION_LIBRARY )

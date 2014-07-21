@@ -1,14 +1,19 @@
-include_directories(${QT_INCLUDES} ${KDE4_INCLUDES} ${SIGNONEXTENSION_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/src ${CMAKE_BUILD_DIR} ${QT_INCLUDES} )
+add_definitions (-fexceptions -DQT_NO_KEYWORDS -Wno-missing-field-initializers -fno-rtti)
+include_directories(${SIGNONEXTENSION_INCLUDE_DIRS})
 
-set(kwalletsignon_SRCS
+set(kwalletsignon5_SRCS
     keyringplugin.cpp
     secretsstorage.cpp
 )
 
-automoc4_add_library(libkeyring-kwallet MODULE ${kwalletsignon_SRCS})
+add_library(libkeyring-kwallet MODULE ${kwalletsignon5_SRCS})
 
 set_target_properties(libkeyring-kwallet PROPERTIES PREFIX "")
-target_link_libraries(libkeyring-kwallet ${QT_QTCORE_LIBRARY} ${QT_QTDBUS_LIBRARY} ${KDE4_KUTILS_LIBS} ${SIGNONEXTENSION_LIBRARIES})
+target_link_libraries(libkeyring-kwallet
+    Qt5::Core
+    Qt5::DBus
+    KF5::Wallet
+    ${SIGNONEXTENSION_LIBRARIES})
 
 set_target_properties(libkeyring-kwallet PROPERTIES
     VERSION ${kwalletsignon_VERSION}
