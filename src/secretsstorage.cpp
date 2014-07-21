@@ -23,7 +23,7 @@
 
 #include <SignOn/AbstractSecretsStorage>
 
-#include <KWallet/Wallet>
+#include <KWallet/KWallet>
 
 using namespace SignOn;
 using namespace KWallet;
@@ -50,11 +50,11 @@ bool SecretsStorage::initialize(const QVariantMap &configuration)
         return false;
     }
 
-    if (!m_wallet->hasFolder("accounts")) {
-        m_wallet->createFolder("accounts");
+    if (!m_wallet->hasFolder(QStringLiteral("accounts"))) {
+        m_wallet->createFolder(QStringLiteral("accounts"));
     }
 
-    m_wallet->setFolder("accounts");
+    m_wallet->setFolder(QStringLiteral("accounts"));
     setIsOpen(true);
     return true;
 }
@@ -72,7 +72,7 @@ bool SecretsStorage::close()
 
 bool SecretsStorage::clear()
 {
-    m_wallet->removeFolder("accounts");
+    m_wallet->removeFolder(QStringLiteral("accounts"));
     return true;
 }
 
@@ -91,11 +91,11 @@ bool SecretsStorage::updateCredentials(const quint32 id,
     }
 
     if (!username.isEmpty()) {
-        map["username"] = username;
+        map[QStringLiteral("username")] = username;
     }
 
     if (!password.isEmpty()) {
-        map["password"] = password;
+        map[QStringLiteral("password")] = password;
     }
 
     return m_wallet->writeMap(sId, map) == 0;
@@ -120,8 +120,8 @@ bool SecretsStorage::loadCredentials(const quint32 id,
         return false;
     }
 
-    username = map["username"];
-    password = map["password"];
+    username = map[QStringLiteral("username")];
+    password = map[QStringLiteral("password")];
 
     return true;
 }
@@ -129,7 +129,7 @@ bool SecretsStorage::loadCredentials(const quint32 id,
 QVariantMap SecretsStorage::loadData(quint32 id, quint32 method)
 {
     QString sId = QString::number(id);
-    sId.append(+ "/" + QString::number(method));
+    sId.append(QLatin1Char('/') + QString::number(method));
 
     QVariantMap data;
     if (!m_wallet->hasEntry(sId)) {
@@ -150,7 +150,7 @@ bool SecretsStorage::storeData(quint32 id, quint32 method,
                                const QVariantMap &data)
 {
     QString sId = QString::number(id);
-    sId.append(+ "/" + QString::number(method));
+    sId.append(QLatin1Char('/') + QString::number(method));
 
     QByteArray serializedData;
     QDataStream stream(&serializedData, QIODevice::WriteOnly);
@@ -163,7 +163,7 @@ bool SecretsStorage::storeData(quint32 id, quint32 method,
 bool SecretsStorage::removeData(quint32 id, quint32 method)
 {
     QString sId = QString::number(id);
-    sId.append(+ "/" + QString::number(method));
+    sId.append(QLatin1Char('/') + QString::number(method));
 
     return m_wallet->removeEntry(sId) == 0;
 }

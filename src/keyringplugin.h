@@ -30,7 +30,7 @@ class KeyringPlugin: public QObject, public SignOn::ExtensionInterface3
     public:
         KeyringPlugin(QObject *parent = 0) : QObject(parent)
         {
-            setObjectName("kwallet-keyring");
+            setObjectName(QStringLiteral("kwallet-keyring"));
         }
 
     SignOn::AbstractSecretsStorage *secretsStorage(QObject *parent = 0) const;
