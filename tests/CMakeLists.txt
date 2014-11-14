@@ -1,14 +1,21 @@
-include_directories(${QT_INCLUDES} ${KDE4_INCLUDES} ${SIGNONEXTENSION_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR}/src ${QT_INCLUDES} )
+remove_definitions(-DQT_NO_CAST_FROM_ASCII)
+include(ECMAddTests)
+
+find_package(Qt5Test ${REQUIRED_QT_VERSION} CONFIG QUIET)
+
+if(NOT Qt5Test_FOUND)
+    message(STATUS "Qt5Test not found, autotests will not be built.")
+    return()
+endif()
+
+include_directories(${SIGNONEXTENSION_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR}/src)
 
 set(testextension_SRCS
-testextension.cpp
-../src/keyringplugin.cpp
-../src/secretsstorage.cpp
+    testextension.cpp
+    ../src/keyringplugin.cpp
+    ../src/secretsstorage.cpp
 )
 
-qt4_generate_moc(${testextension_SRCS})
-kde4_add_unit_test(testextension ${testextension_SRCS})
 
-target_link_libraries(testextension ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KUTILS_LIBS} ${SIGNONEXTENSION_LIBRARIES})
-
-add_test(testextension ${CMAKE_CURRENT_BINARY_DIR}/testextension)
+ecm_add_tests(${testextension_SRCS}
+              LINK_LIBRARIES Qt5::Test Qt5::Core Qt5::DBus KF5::Wallet ${SIGNONEXTENSION_LIBRARIES})
