@@ -33,12 +33,10 @@ SecretsStorage::SecretsStorage(QObject *parent)
  , m_keyringName()
  , m_wallet(0)
 {
-    qDebug() << "Constructed";
 }
 
 SecretsStorage::~SecretsStorage()
 {
-    qDebug() << "Destroyed";
 }
 
 bool SecretsStorage::initialize(const QVariantMap &configuration)
