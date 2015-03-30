@@ -15,9 +15,4 @@ target_link_libraries(libkeyring-kwallet
     KF5::Wallet
     ${SIGNONEXTENSION_LIBRARIES})
 
-set_target_properties(libkeyring-kwallet PROPERTIES
-    VERSION ${kwalletsignon_VERSION}
-    SOVERSION ${kwalletsignon_VERSION_MAJOR}
-)
-
 install(TARGETS libkeyring-kwallet DESTINATION ${SIGNONEXTENSION_PLUGINDIR})
