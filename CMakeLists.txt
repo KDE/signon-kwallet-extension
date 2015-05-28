@@ -1,8 +1,8 @@
 project(kwalletsignon5)
 set(kwalletsignon_VERSION_MAJOR 15)
 set(kwalletsignon_VERSION_MINOR 04)
-set(kwalletsignon_VERSION_RELEASE 1)
-set(kwalletsignon_VERSION "15.04.1")
+set(kwalletsignon_VERSION_RELEASE 2)
+set(kwalletsignon_VERSION "15.04.2")
 
 cmake_minimum_required(VERSION 2.8.12)
 
