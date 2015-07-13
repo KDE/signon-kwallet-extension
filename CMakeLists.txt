@@ -1,8 +1,9 @@
 project(kwalletsignon5)
-set(kwalletsignon_VERSION_MAJOR 15)
-set(kwalletsignon_VERSION_MINOR 03)
-set(kwalletsignon_VERSION_RELEASE 95)
-set(kwalletsignon_VERSION "15.03.95")
+
+set(KDE_APPLICATIONS_VERSION_MAJOR "15")
+set(KDE_APPLICATIONS_VERSION_MINOR "07")
+set(KDE_APPLICATIONS_VERSION_MICRO "80")
+set(kwalletsignon_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIONS_VERSION_MINOR}.${KDE_APPLICATIONS_VERSION_MICRO}")
 
 cmake_minimum_required(VERSION 2.8.12)
 
