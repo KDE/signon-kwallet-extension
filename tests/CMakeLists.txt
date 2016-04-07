@@ -18,4 +18,4 @@ set(testextension_SRCS
 
 
 ecm_add_tests(${testextension_SRCS}
-              LINK_LIBRARIES Qt5::Test Qt5::Core Qt5::DBus KF5::Wallet ${SIGNONEXTENSION_LIBRARIES})
+              LINK_LIBRARIES Qt5::Test Qt5::Core KF5::Wallet ${SIGNONEXTENSION_LIBRARIES})
