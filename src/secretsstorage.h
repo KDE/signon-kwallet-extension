@@ -35,17 +35,17 @@ public:
     SecretsStorage(QObject *parent = 0);
     ~SecretsStorage();
 
-    virtual bool initialize(const QVariantMap& configuration);
-    virtual bool close();
-    virtual bool clear();
+    bool initialize(const QVariantMap& configuration) Q_DECL_OVERRIDE;
+    bool close() Q_DECL_OVERRIDE;
+    bool clear() Q_DECL_OVERRIDE;
 
-    virtual bool updateCredentials(const quint32 id, const QString& username, const QString& password);
-    virtual bool removeCredentials(const quint32 id);
-    virtual bool loadCredentials(const quint32 id, QString& username, QString& password);
+    bool updateCredentials(const quint32 id, const QString& username, const QString& password) Q_DECL_OVERRIDE;
+    bool removeCredentials(const quint32 id) Q_DECL_OVERRIDE;
+    bool loadCredentials(const quint32 id, QString& username, QString& password) Q_DECL_OVERRIDE;
 
-    virtual QVariantMap loadData(quint32 id, quint32 method);
-    virtual bool storeData(quint32 id, quint32 method, const QVariantMap& data);
-    virtual bool removeData(quint32 id, quint32 method);
+    QVariantMap loadData(quint32 id, quint32 method) Q_DECL_OVERRIDE;
+    bool storeData(quint32 id, quint32 method, const QVariantMap& data) Q_DECL_OVERRIDE;
+    bool removeData(quint32 id, quint32 method) Q_DECL_OVERRIDE;
 
 
     QByteArray m_keyringName;
