@@ -31,7 +31,7 @@ using namespace KWallet;
 SecretsStorage::SecretsStorage(QObject *parent)
  : AbstractSecretsStorage(parent)
  , m_keyringName()
- , m_wallet(0)
+ , m_wallet(nullptr)
 {
 }
 

@@ -29,12 +29,12 @@ class KeyringPlugin: public QObject, public SignOn::ExtensionInterface3
     Q_PLUGIN_METADATA(IID "com.nokia.SingleSignOn.ExtensionInterface/3.0")
 
     public:
-        KeyringPlugin(QObject *parent = 0) : QObject(parent)
+        KeyringPlugin(QObject *parent = nullptr) : QObject(parent)
         {
             setObjectName(QStringLiteral("kwallet-keyring"));
         }
 
-    SignOn::AbstractSecretsStorage *secretsStorage(QObject *parent = 0) const Q_DECL_OVERRIDE;
+    SignOn::AbstractSecretsStorage *secretsStorage(QObject *parent = nullptr) const Q_DECL_OVERRIDE;
 };
 
 #endif // KEYRING_PLUGIN_H
