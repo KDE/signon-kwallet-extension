@@ -16,7 +16,6 @@ find_package(Qt5 5.6.0 CONFIG REQUIRED Core)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(FeatureSummary)
-include(ECMInstallIcons)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 
 find_package(KF5 5.18.0 REQUIRED Wallet)
