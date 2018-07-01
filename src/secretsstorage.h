@@ -33,19 +33,19 @@ class SecretsStorage: public SignOn::AbstractSecretsStorage
 
 public:
     SecretsStorage(QObject *parent = nullptr);
-    ~SecretsStorage();
+    ~SecretsStorage() override;
 
-    bool initialize(const QVariantMap& configuration) Q_DECL_OVERRIDE;
-    bool close() Q_DECL_OVERRIDE;
-    bool clear() Q_DECL_OVERRIDE;
+    bool initialize(const QVariantMap& configuration) override;
+    bool close() override;
+    bool clear() override;
 
-    bool updateCredentials(const quint32 id, const QString& username, const QString& password) Q_DECL_OVERRIDE;
-    bool removeCredentials(const quint32 id) Q_DECL_OVERRIDE;
-    bool loadCredentials(const quint32 id, QString& username, QString& password) Q_DECL_OVERRIDE;
+    bool updateCredentials(const quint32 id, const QString& username, const QString& password) override;
+    bool removeCredentials(const quint32 id) override;
+    bool loadCredentials(const quint32 id, QString& username, QString& password) override;
 
-    QVariantMap loadData(quint32 id, quint32 method) Q_DECL_OVERRIDE;
-    bool storeData(quint32 id, quint32 method, const QVariantMap& data) Q_DECL_OVERRIDE;
-    bool removeData(quint32 id, quint32 method) Q_DECL_OVERRIDE;
+    QVariantMap loadData(quint32 id, quint32 method) override;
+    bool storeData(quint32 id, quint32 method, const QVariantMap& data) override;
+    bool removeData(quint32 id, quint32 method) override;
 
 
     QByteArray m_keyringName;
