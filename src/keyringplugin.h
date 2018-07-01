@@ -19,7 +19,7 @@
 #ifndef KEYRING_PLUGIN_H
 #define KEYRING_PLUGIN_H
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <SignOn/ExtensionInterface>
 
 class KeyringPlugin: public QObject, public SignOn::ExtensionInterface3

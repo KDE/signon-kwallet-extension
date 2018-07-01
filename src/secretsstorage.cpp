@@ -19,11 +19,11 @@
 #include "secretsstorage.h"
 
 #include <QDataStream>
-#include <QtCore/QDebug>
+#include <QDebug>
 
 #include <SignOn/AbstractSecretsStorage>
 
-#include <KWallet/KWallet>
+#include <KWallet>
 
 using namespace SignOn;
 using namespace KWallet;
