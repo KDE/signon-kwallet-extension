@@ -25,5 +25,3 @@ SignOn::AbstractSecretsStorage* KeyringPlugin::secretsStorage(QObject* parent) c
 {
     return new SecretsStorage();
 }
-
-#include "keyringplugin.moc"

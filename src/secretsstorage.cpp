@@ -165,5 +165,3 @@ bool SecretsStorage::removeData(quint32 id, quint32 method)
 
     return m_wallet->removeEntry(sId) == 0;
 }
-
-#include "secretsstorage.moc"
