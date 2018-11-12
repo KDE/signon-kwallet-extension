@@ -17,7 +17,7 @@
  *************************************************************************************/
 
 #include <QtTest/QtTest>
-#include <QtCore/QObject>
+#include <QObject>
 
 #include "../src/keyringplugin.h"
 #include "../src/secretsstorage.h"

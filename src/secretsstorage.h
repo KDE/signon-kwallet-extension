@@ -32,7 +32,7 @@ class SecretsStorage: public SignOn::AbstractSecretsStorage
     Q_OBJECT
 
 public:
-    SecretsStorage(QObject *parent = nullptr);
+    explicit SecretsStorage(QObject *parent = nullptr);
     ~SecretsStorage() override;
 
     bool initialize(const QVariantMap& configuration) override;
