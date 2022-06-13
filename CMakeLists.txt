@@ -7,8 +7,8 @@ set(kwalletsignon_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VE
 
 project(kwalletsignon5 VERSION ${kwalletsignon_VERSION})
 
-set(KF5_MIN_VERSION "5.18.0")
-set(QT_REQUIRED_VERSION "5.6.0")
+set(KF5_MIN_VERSION "5.90.0")
+set(QT_REQUIRED_VERSION "5.15.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
@@ -20,7 +20,7 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 
 include(FeatureSummary)
 
-find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Core)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_REQUIRED_VERSION} CONFIG REQUIRED Core)
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED Wallet)
 
