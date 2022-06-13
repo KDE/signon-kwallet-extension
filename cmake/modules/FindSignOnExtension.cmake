@@ -11,7 +11,7 @@ execute_process(
     OUTPUT_VARIABLE _pkgconfig_invoke_result
     RESULT_VARIABLE _pkgconfig_failed)
 if (_pkgconfig_failed)
-    message(FAILED "couldn-t find the plugindir for signonextension")
+    message(FAILED " couldn-t find the plugindir for signonextension")
 else()
     string(REGEX REPLACE "[\r\n]"                  " " _pkgconfig_invoke_result "${_pkgconfig_invoke_result}")
     string(REGEX REPLACE " +$"                     ""  _pkgconfig_invoke_result "${_pkgconfig_invoke_result}")
