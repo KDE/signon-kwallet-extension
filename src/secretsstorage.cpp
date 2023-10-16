@@ -20,6 +20,7 @@
 
 #include <QDataStream>
 #include <QDebug>
+#include <QIODevice>
 
 #include <SignOn/AbstractSecretsStorage>
 

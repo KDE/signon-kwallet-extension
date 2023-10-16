@@ -23,7 +23,7 @@ include(FeatureSummary)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_REQUIRED_VERSION} CONFIG REQUIRED Core)
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED Wallet)
+find_package(KF${QT_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED Wallet)
 
 find_package(SignOnExtension REQUIRED)
 
