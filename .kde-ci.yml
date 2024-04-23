@@ -14,3 +14,4 @@ Dependencies:
 
 Options:
   cmake-options: "-DINSTALL_BROKEN_SIGNON_EXTENSION=TRUE"
+  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
