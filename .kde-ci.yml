@@ -7,7 +7,7 @@ Dependencies:
     'frameworks/extra-cmake-modules': '@stable'
     'frameworks/kwallet': '@stable'
 
-- 'on': ['Linux/Qt6', 'FreeBSD/Qt6']
+- 'on': ['Linux/Qt6', 'Linux/Qt6Next', 'FreeBSD/Qt6']
   'require':
     'frameworks/extra-cmake-modules': '@latest-kf6'
     'frameworks/kwallet': '@latest-kf6'
