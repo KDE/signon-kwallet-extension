@@ -2,11 +2,6 @@
 # SPDX-License-Identifier: CC0-1.0
 
 Dependencies:
-- 'on': ['Linux/Qt5', 'FreeBSD/Qt5']
-  'require':
-    'frameworks/extra-cmake-modules': '@stable'
-    'frameworks/kwallet': '@stable'
-
 - 'on': ['Linux/Qt6', 'Linux/Qt6Next', 'FreeBSD/Qt6']
   'require':
     'frameworks/extra-cmake-modules': '@latest-kf6'
@@ -14,4 +9,4 @@ Dependencies:
 
 Options:
   cmake-options: "-DINSTALL_BROKEN_SIGNON_EXTENSION=TRUE"
-  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
+  require-passing-tests-on: ['Linux', 'FreeBSD']

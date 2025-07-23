@@ -11,7 +11,7 @@ add_library(libkeyring-kwallet MODULE ${kwalletsignon5_SRCS})
 set_target_properties(libkeyring-kwallet PROPERTIES PREFIX "")
 target_link_libraries(libkeyring-kwallet
     Qt::Core
-    KF${QT_MAJOR_VERSION}::Wallet
+    KF6::Wallet
     ${SIGNONEXTENSION_LIBRARIES})
 
 if(INSTALL_BROKEN_SIGNON_EXTENSION)
